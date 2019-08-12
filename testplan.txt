@@ -1,0 +1,24 @@
+The two workloads I decided to include are:
+
+1. testing how well my algorithm would free an initialized pointer one thousand times
+2. initializing a pointer with five thousand bytes, freeing it, initialize it again to five thousand bytes, and then free it again.
+-----------------------------------------------------------------------------------------------------
+1.) For this test, the idea was to stress the program and see if it can handle the case  where a user allocates space, and then the user performs 999 incorrect frees.
+
+ 	char *pt = (char *) malloc(sizeof(int) * 10);
+	
+	i = 0;
+	while(i < 1000){
+		free(pt);
+		i++;
+	}
+
+2.) For this test, the idea was to see how the program would handle intializing a pointer to an incorrect size, freeing it, initializing it to an incorrect size again, and then freeing it again
+
+	char *ptr = (char *) malloc(5000);
+	free(ptr);
+	ptr = (char *) malloc(5000);
+	free(ptr);
+	i++;
+
+
